@@ -11,6 +11,10 @@ Car.init(
       primaryKey: true,
       autoIncrement: true,
     },
+    // image:{
+    //   type: DataTypes.Image,
+    //   allowNull: false,
+    // },
     brand: {
       type: DataTypes.STRING,
       allowNull: false,
@@ -24,7 +28,7 @@ Car.init(
       allowNull: false,
     },
     mileage: {
-      type: DataTypes.DATE,
+      type: DataTypes.DECIMAL,
       allowNull: false,
     },
     price: {
