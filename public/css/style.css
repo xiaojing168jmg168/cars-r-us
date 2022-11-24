@@ -41,8 +41,6 @@ main {
   flex-grow: 1;
 }
 
-
-
 nav {
   display: flex;
   background-color: var(--secondary);
@@ -90,34 +88,24 @@ nav a:hover {
   color: var(--tertiary);
 }
 
-/* Changes the background color and font color of the username-login button and password-login button from login.js. As well as changing those colors while hovering the button. */
+/* Changes the background color and font color of the username-login and password-login from login.js. */
 #username-login {
-  background-color: var(--secondary);
-  color: var(--light);
+  background-color: var(--light);
+  color: var(--tertiary);
 }
 
 #password-login {
-  background-color: var(--secondary);
-  color: var(--light);
-}
-
-#username-login:hover {
-  color: var(--secondary);
-  background-color: var(--dark);
-}
-
-#password-login:hover {
-  color: var(--secondary);
-  background-color: var(--dark);
+  background-color: var(--light);
+  color: var(--tertiary);
 }
 
 /* Changes the background color and font color of the logout button from logout.js. As well as changing those colors while hovering the button. */
-#logout {
+button {
   background-color: var(--secondary);
   color: var(--light);
 }
 
-#logout:hover {
+button:hover {
   color: var(--secondary);
   background-color: var(--dark);
 }
