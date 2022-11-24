@@ -60,8 +60,6 @@ nav a:hover {
   background-color: var(--dark);
 }
 
-
-
 /* LAYOUT */
 .container {
   display: flex;
@@ -69,3 +67,58 @@ nav a:hover {
   align-content: flex-start;
   align-items: center;
 }
+
+/* Changes the background color and font color of the login-form and signup-form from login.js. */
+.login-form {
+  background-color: var(--primary);
+  color: var(--light);
+}
+
+.signup-form {
+  background-color: var(--primary);
+  color: var(--light);
+}
+
+/* Changes the background color and font color of the username-signup and password-signup from login.js. */
+#username-signup {
+  background-color: var(--light);
+  color: var(--tertiary);
+}
+
+#password-signup {
+  background-color: var(--light);
+  color: var(--tertiary);
+}
+
+/* Changes the background color and font color of the username-login button and password-login button from login.js. As well as changing those colors while hovering the button. */
+#username-login {
+  background-color: var(--secondary);
+  color: var(--light);
+}
+
+#password-login {
+  background-color: var(--secondary);
+  color: var(--light);
+}
+
+#username-login:hover {
+  color: var(--secondary);
+  background-color: var(--dark);
+}
+
+#password-login:hover {
+  color: var(--secondary);
+  background-color: var(--dark);
+}
+
+/* Changes the background color and font color of the logout button from logout.js. As well as changing those colors while hovering the button. */
+#logout {
+  background-color: var(--secondary);
+  color: var(--light);
+}
+
+#logout:hover {
+  color: var(--secondary);
+  background-color: var(--dark);
+}
+
