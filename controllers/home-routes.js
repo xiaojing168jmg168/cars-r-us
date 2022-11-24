@@ -28,7 +28,7 @@ router.get('/signup', async (req, res) => {
 })
 
 // update car page
-router.get('/update-car', async (req, res) => {
+router.get('/update-car/:id', async (req, res) => {
     res.render('update-car')
 })
 
