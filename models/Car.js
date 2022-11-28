@@ -24,7 +24,7 @@ Car.init(
       allowNull: false,
     },
     year: {
-      type: DataTypes.DATE,
+      type: DataTypes.INTEGER,
       allowNull: false,
     },
     mileage: {
@@ -35,6 +35,13 @@ Car.init(
       type: DataTypes.DECIMAL,
       allowNull: false,
     },
+    user_id: {
+      type: DataTypes.INTEGER,
+      references:{
+         model:'User',
+         key:'id'
+      }
+    }
   },
   {
     sequelize,
