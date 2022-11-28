@@ -13,51 +13,250 @@
 
   <script defer src="https://use.fontawesome.com/releases/v5.3.1/js/all.js"></script>
 </head>
+<style>
+  :root {
+  --primary: #112B3C;
+  --secondary: #205375;
+  --tertiary: #F66B0E;
+  --quatrinary: #dcd9d9;
+  --light: #e3e4e3;
+  --dark: #182c23;
+  --error: rgb(228, 46, 1);
+  --border-radius: 0.3rem;
+}
+
+html {
+    height: 100%;
+  }
+
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color:var(--quatrinary);
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+
+h1,h2,h3,h4,h5,h6{
+    font-size: 100%;
+}
+
+ a {
+    color: rgba(62, 62, 63, 1);
+    text-decoration: none;
+ }
+
+ input {
+     display: block;
+ }
+
+ ul {
+     list-style-type:  none;
+     background: #fff;
+ }
+
+.wrapper {
+  width: 100%;
+  min-height: 100%;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  justify-content: flex-start;
+  background-color:var(--quatrinary);
+}
+
+
+
+main.container {
+  max-height: 70vh;
+  height: 70vh;
+  overflow: hidden;
+}
+
+
+a:visited {
+  color: inherit;
+}
+
+
+nav {
+  display: flex;
+  justify-content: flex-end;
+  height: 10vh;
+  width: 95%;
+  margin: 0 auto;
+} 
+
+.logo{
+  color: #F66B0E;
+  font-weight: 700;
+  padding: 10px;
+  margin: 10px 10px;
+  width: 100px;
+  height: 40px;
+  display: inline-block;
+}
+
+.navbar-nav{
+
+margin-right: 15px;
+font-size: 18px;
+display: flex;
+gap: 1em;
+text-align: end;
+}
+
+.nav-item{
+
+  pad: 5px 14px;
+}
+.nav-link{
+  color: var(--light);
+}
+nav a {
+
+  padding: 14px 20px;
+  text-decoration: none;
+  text-align: center;
+}
+
+nav a:hover {
+
+  background-color: var(--dark);
+}
+
+
+/* Changes the background color and font color of the login-form and signup-form from login.js. */
+.login-form {
+  background-color: var(--primary);
+  color: var(--light);
+}
+
+.signup-form {
+  background-color: var(--primary);
+  color: var(--light);
+}
+
+/* Changes the background color and font color of the username-signup and password-signup from login.js. */
+#username-signup {
+  background-color: var(--light);
+  color: var(--tertiary);
+}
+
+#password-signup {
+  background-color: var(--light);
+  color: var(--tertiary);
+}
+
+/* Changes the background color and font color of the username-login and password-login from login.js. */
+#username-login {
+  background-color: var(--light);
+  color: var(--tertiary);
+}
+
+#password-login {
+  background-color: var(--light);
+  color: var(--tertiary);
+}
+
+/* Changes the background color and font color of the logout button from logout.js. As well as changing those colors while hovering the button. */
+button {
+  background-color: var(--secondary);
+  color: var(--light);
+}
+
+button:hover {
+  color: var(--secondary);
+  background-color: var(--dark);
+}
+
+
+/* footer */
+footer{
+  color:var(--quatrinary);
+  height: auto;
+  padding: 30px 0;
+}
+
+footer #footer-nav-container{
+   color:var(--quatrinary);
+  display: block;
+  text-align: center;
+}
+
+#footer-nav-container div{
+  display: inline-block;
+}
+
+footer a{
+   color:var(--quatrinary);
+  margin-right: 0;
+  padding: 0 1.5em;
+}
+
+
+footer .logo {
+  margin-top: 2rem;
+}
+
+
+</style>
 
 <body>
-  <div class="container wrapper">
-    <header class="row">
-      <div class="slide-container">
-        <!--Area of the images-->
-        <div class="slide-wrapper">
-          <img class="slide-img" src="../images/car1.jpg" alt="Site Logo">
-          <img class="slide-img" src="https://www.foundry.com/sites/default/files/inline-images/Images_003_0.jpg">
-          <img class="slide-img"
-            src="https://images.unsplash.com/photo-1669532661485-32e8d24c3765?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2340&q=80">
-          <img class="slide-img" src="../images/car4.jpg">
-        </div>
 
-      </div>
-      <nav>
-        <div class="navbar">
-           
-          <li><a class="link" href="/">Buy</a></li>
-          <li><a class="link" href="/dashboard">sale</a></li>
-          {{#if loggedIn}}
-          <li><a class="link" href="/" id="logout">Logout</a></li>
+    <header class="row">
+
+ <nav class="navbar navbar-expand-lg bg-dark">
+  <div class="container-fluid">
+    <a class="navbar-brand logo" href="about-us">Car-R-Us</a>
+    <button class="navbar-toggler bg-light" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav bg-dark me-auto mb-2 mb-lg-0">
+        <li class="nav-item bg-dark">
+          <a class="nav-link" href="about-us">About Us</a>
+        </li>
+        <li class="nav-item bg-dark">
+          <a class="nav-link" href="/">Buy</a>
+        </li>
+         <li class="nav-item bg-dark">
+          <a class="nav-link" href="/dashboard">Sale</a>
+        </li>
+         {{#if loggedIn}}
+          <li class="nav-item bg-dark"><a class="nav-link" href="/" id="logout">Logout</a></li>
           {{else}}
-          <li><a class="link" href="/login">Login</a></li>
+          <li class="nav-item bg-dark"><a class="nav-link" href="/login">Login</a></li>
 
           {{/if}}
-           <li><a class="link" href="/contact-us">Contact Us</a></li>
-           <li><a class="link" href="/">About Us</a></li>
-        </div>
-      </nav>
-      <section class="head-search input-group flex-nowrap">
-        <span class="input-group-text" id="addon-wrapping">@</span>
-        <input type="text" class="form-control" placeholder="Search by Model" aria-label="model"
-          aria-describedby="addon-wrapping">
-      </section>
-
-    </header>
-
+          <li class="nav-item bg-dark"><a class="nav-link" href="/contact-us">Contact Us</a></li>
+           <li class="nav-item bg-dark"><a class="nav-link" href="/">About Us</a></li>
+       
+      </ul>
+      <form class="d-flex" role="search">
+        <input class="form-control me-2" type="search" placeholder="Search by Model" aria-label="Search">
+        <button class="btn btn-outline-success" type="submit">Search</button>
+      </form>
+    </div>
+  </div>
+</nav>
+      </header>
+      <div class="container wrapper">
     <main>
       <div class="gallery">
         {{{body}}}content
       </div>
     </main>
   </div>
- <footer>
+ <footer class="bg-dark">
       <div id="footer-nav-container">
         <div>
           {{#if loggedIn}}
@@ -72,8 +271,8 @@
           <p>&copy; 2022 Cars-R-Us. All rights reserved</p>
         </div>
         <div class="logo">
-          <div class="logo-wrapper">
-            <img src="../images/logo.png" alt="Logo" />
+          
+          Cars-R-Us
           </div>
         </div>
       </div>
