@@ -1,15 +1,16 @@
 const router = require('express').Router();
 const { User } = require('../models');
+const withAuth = require('../utils/auth')
 
 
 // Homepage Route
 router.get("/", async (req, res) => {
-    try{
+    try {
         const userData = User.findAll({
             attributes: { exclude: ['password'] },
             order: [['name', 'ASC']],
         })
-        
+
         const users = userData.map((user) => user.get({ plain: true }));
 
         res.render("homepage", {
@@ -17,7 +18,7 @@ router.get("/", async (req, res) => {
             logged_in: req.session.logged_in
         })
     }
-    catch (err){
+    catch (err) {
         res.status(500).send(err)
     }
 })
@@ -43,34 +44,33 @@ router.get('/add-car', async (req, res) => {
 })
 
 // result route
-router.get('/result', (req,res) => {
+router.get('/result', (req, res) => {
     res.render('result')
 })
 
 
 // about-us route
-router.get('/about-us', (req,res) => {
+router.get('/about-us', (req, res) => {
     res.render('about-us')
 })
 
 // contact-us route
-router.get('/contact-us', (req,res) => {
+router.get('/contact-us', (req, res) => {
     res.render('contact-us')
 })
 
 //privacy-policy
-router.get('/privacy-policy', (req,res) => {
+router.get('/privacy-policy', (req, res) => {
     res.render('privacy-policy')
 })
 // Login Route
 router.get('/login', (req, res) => {
     if (req.session.logged_in) {
-      res.redirect('/');
-      return;
+        res.redirect('/');
+        return;
     }
-  
+
     res.render('login');
-  });
-  
-  module.exports = router;
-  
+});
+
+module.exports = router;

@@ -22,9 +22,7 @@ router.post('/login', async (req, res) => {
 
         // Checks if email exists in database
         if (!userData) {
-            res
-                .status(400)
-                .json({ message: 'Incorrect email or password, please try again' });
+            res.status(400).json({ message: 'Incorrect email or password, please try again' });
             return;
         }
 
