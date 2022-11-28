@@ -15,38 +15,54 @@ router.post('/', async (req, res) => {
         res.status(400).json(err);
     }
 })
-
+// Route for User Login
 router.post('/login', async (req, res) => {
     try {
-      const userData = await User.findOne({ where: { email: req.body.email } });
-  
-      if (!userData) {
-        res
-          .status(400)
-          .json({ message: 'Incorrect email or password, please try again' });
-        return;
-      }
-  
-      const validPassword = await userData.checkPassword(req.body.password);
-  
-      if (!validPassword) {
-        res
-          .status(400)
-          .json({ message: 'Incorrect email or password, please try again' });
-        return;
-      }
-  
-      req.session.save(() => {
-        req.session.user_id = userData.id;
-        req.session.logged_in = true;
-        
-        res.json({ user: userData, message: 'You are now logged in!' });
-      });
-  
-    } catch (err) {
-      res.status(400).json(err);
-    }
-  });
+        const userData = await User.findOne({ where: { email: req.body.email } });
 
+        // Checks if email exists in database
+        if (!userData) {
+            res
+                .status(400)
+                .json({ message: 'Incorrect email or password, please try again' });
+            return;
+        }
+
+        const validPassword = await userData.checkPassword(req.body.password);
+
+        // Checks if password is correcte
+        if (!validPassword) {
+            res.status(400).json({ message: 'Incorrect email or password, please try again' });
+            return;
+        }
+
+        // Serialize user data
+        const user = userData.get({ plain: true })
+
+        // saves user session once log in is successful
+        req.session.save(() => {
+            req.session.user_id = user.id;
+            req.session.logged_in = true;
+
+            res.json({ user: user, message: 'You are now logged in!' });
+        });
+
+    }
+    // Error handler 
+    catch (err) {
+        res.status(400).json(err);
+    }
+});
+
+//User log out
+router.post('/logout', (req, res) => {
+    if (req.session.logged_in) {
+        req.session.destroy(() => {
+            res.status(204).end();
+        });
+    } else {
+        res.status(404).end();
+    }
+});
 
 module.exports = router;
