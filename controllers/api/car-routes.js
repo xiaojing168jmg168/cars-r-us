@@ -14,7 +14,7 @@ console.log(cloudinary.config({
 
 
 // Route to create a new listing
-router.post("/newCar", withAuth, async (req, res) => {
+router.post("/newCar", async (req, res) => {
     try {
         let { images, brand, model, year, mileage, price} = req.body;
         const imgArr = [];
@@ -54,7 +54,7 @@ router.post("/newCar", withAuth, async (req, res) => {
 })
 
 // Route to delete a car listing
-router.delete('/:id', withAuth, async (req, res) => {
+router.delete('/:id', async (req, res) => {
     try {
         const carData = await Car.destroy({
           where: {
@@ -72,6 +72,26 @@ router.delete('/:id', withAuth, async (req, res) => {
       } catch (err) {
         res.status(500).json(err);
       }
+})
+
+// Route to update a car listing
+router.put('/:id', async (req, res) => {
+    try{
+        const carData = await Car.update(
+            {
+                title: req.body.title,
+                content: req.body.content
+            }, {
+            where: {
+                id: req.params.id,
+                user_id: req.session.user_id
+            }
+        })
+        res.status(200).json(carData)
+    }
+    catch (err) {
+        res.status(500).json(err);
+    }
 })
 
 module.exports = router;
