@@ -8,12 +8,11 @@
   --error: rgb(228, 46, 1);
   --border-radius: 0.3rem;
 }
-*{
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
-  }
+
+html{
+  height: 100%;
+}
+
 body {
   font-family: Arial;
   margin: 0;
@@ -21,9 +20,14 @@ body {
   flex-direction: column;
   min-height: 100vh;
   justify-content: flex-start;
-  background-color: var(--quatrinary);
+  background-color: var(--secondary);
 }
 
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  }
 /*Basic structure of slider*/
 .slide-container{
   width: 70%;
@@ -169,5 +173,34 @@ button {
 button:hover {
   color: var(--secondary);
   background-color: var(--dark);
+}
+
+
+/* footer */
+footer{
+  height: auto;
+  padding: 30px 0;
+}
+
+footer #footer-nav-container{
+  display: block;
+  text-align: center;
+}
+
+#footer-nav-container div{
+  display: inline-block;
+}
+
+footer a{
+  margin-right: 0;
+  padding: 0 1.5em;
+}
+
+footer .logo-wrapper{
+  width: 30%;
+}
+
+footer .logo {
+  margin-top: 2rem;
 }
 

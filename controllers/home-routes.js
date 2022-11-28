@@ -47,6 +47,21 @@ router.get('/result', (req,res) => {
     res.render('result')
 })
 
+
+// about-us route
+router.get('/about-us', (req,res) => {
+    res.render('about-us')
+})
+
+// contact-us route
+router.get('/contact-us', (req,res) => {
+    res.render('contact-us')
+})
+
+//privacy-policy
+router.get('/privacy-policy', (req,res) => {
+    res.render('privacy-policy')
+})
 // Login Route
 router.get('/login', (req, res) => {
     if (req.session.logged_in) {
