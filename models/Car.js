@@ -11,10 +11,9 @@ Car.init(
       primaryKey: true,
       autoIncrement: true,
     },
-    // image:{
-    //   type: DataTypes.ARRAY(DataTypes.STRING),
-      
-    // },
+    image:{
+      type: DataTypes.STRING,
+    },
     brand: {
       type: DataTypes.STRING,
       allowNull: false,
