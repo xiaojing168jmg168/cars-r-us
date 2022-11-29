@@ -4,8 +4,8 @@ const seedUsers = require('./userData');
 
 const seedAll = async () => {
   await sequelize.sync({ force: true });
-  await seedCars();
   await seedUsers();
+  await seedCars();
   process.exit(0);
 };
 
