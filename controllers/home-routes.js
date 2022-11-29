@@ -37,7 +37,29 @@ router.get('/signup', async (req, res) => {
 
 // result route
 router.get('/result', (req, res) => {
-    res.render('result')
+    try{
+        const carData = Car.findAll({
+            include: {
+                model: User,
+                attributes: ['name', 'email']
+            },
+            where: {
+                brand: req.body.brand,
+                model: req.body.model,
+                year: req.body.year,
+                mileage: req.body.mileage,
+            }
+        })
+
+        // Serialize Car Data
+        const cars = carData.map((car) => car.get({plain: true}))
+
+        // Render results page while sending logged_in and card to the view
+        res.render('result', {cars, logged_in: req.session.logged_in})
+    }
+    catch (err) {
+        res.status(500).json(err);
+    }
 })
 
 
@@ -55,6 +77,7 @@ router.get('/contact-us', (req, res) => {
 router.get('/privacy-policy', (req, res) => {
     res.render('privacy-policy')
 })
+
 // Login Route
 router.get('/login', (req, res) => {
     if (req.session.logged_in) {
