@@ -22,6 +22,7 @@ router.get("/home", async (req, res) => {
 
         const cars = carData.map((car) => car.get({ plain: true }));
 
+        console.log(cars);
 
         res.render("homepage", {
             cars,
