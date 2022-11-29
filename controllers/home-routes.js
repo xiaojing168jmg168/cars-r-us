@@ -24,23 +24,29 @@ router.get("/home", async (req, res) => {
 
         console.log(cars);
 
-        res.render("homepage", {
+        res.render("about-us", {
             cars,
             logged_in: req.session.logged_in
         })
     }
-    catch (err) {
+    catch (err){
         res.status(500).send(err)
     }
 })
 
 // signup page
 router.get('/signup', async (req, res) => {
-    if (req.session.logged_in) {
-        res.redirect('/dashboard');
-        return
-      }
-      res.render('signup')
+    res.render('singup')
+})
+
+// update car page
+router.get('/update-car/:id', async (req, res) => {
+    res.render('update-car')
+})
+
+// Dashboard page
+router.get('/dashboard', async (req, res) => {
+    res.render('dashboard')
 })
 
 
@@ -88,15 +94,15 @@ router.get('/privacy-policy', async (req, res) => {
 
     res.render('privacy-policy')
 })
-
 // Login Route
 router.get('/login', async (req, res) => {
     if (req.session.logged_in) {
-        res.redirect('/');
-        return;
+      res.redirect('/');
+      return;
     }
-
+  
     res.render('login');
-});
-
-module.exports = router;
+  });
+  
+  module.exports = router;
+  
