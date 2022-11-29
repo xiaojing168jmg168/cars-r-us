@@ -5,14 +5,18 @@ const { User, Car } = require('../models');
 // Homepage Route
 router.get("/", async (req, res) => {
     try {
+
         const carData = await Car.findAll({
+
             include: {
                 model: User,
                 attributes: ['name', 'email']
             }
         })
-        
-        const users = userData.map((user) => user.get({ plain: true }));
+
+
+        const cars = carData.map((car) => car.get({ plain: true }));
+
 
         res.render("homepage", {
             cars,
@@ -41,23 +45,53 @@ router.get('/dashboard', async (req, res) => {
 
 
 // result route
-router.get('/result', (req,res) => {
-    res.render('result')
+
+router.get('/result', async (req, res) => {
+    try{
+        const carData = await Car.findAll({
+
+            include: {
+                model: User,
+                attributes: ['name', 'email']
+            },
+            where: {
+                brand: req.body.brand,
+                model: req.body.model,
+                year: req.body.year,
+                mileage: req.body.mileage,
+            }
+        })
+
+        // Serialize Car Data
+        const cars = carData.map((car) => car.get({plain: true}))
+
+        // Render results page while sending logged_in and card to the view
+        res.render('result', {cars, logged_in: req.session.logged_in})
+    }
+    catch (err) {
+        res.status(500).json(err);
+    }
 })
 
 
 // about-us route
-router.get('/about-us', (req,res) => {
+
+router.get('/about-us', async (req, res) => {
+
     res.render('about-us')
 })
 
 // contact-us route
-router.get('/contact-us', (req,res) => {
+
+router.get('/contact-us', async (req, res) => {
+
     res.render('contact-us')
 })
 
 //privacy-policy
-router.get('/privacy-policy', (req,res) => {
+
+router.get('/privacy-policy', async (req, res) => {
+
     res.render('privacy-policy')
 })
 // Login Route
