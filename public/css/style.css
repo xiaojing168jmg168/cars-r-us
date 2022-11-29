@@ -1,5 +1,5 @@
 :root {
-  --primary: #112B3C;
+  --primary: #9fa0a2;
   --secondary: #205375;
   --tertiary: #F66B0E;
   --quatrinary: #dcd9d9;
@@ -55,6 +55,8 @@ h1,h2,h3,h4,h5,h6{
   min-height: 100vh;
   justify-content: flex-start;
   background-color:var(--quatrinary);
+  position: relative;
+ 
 }
 
 main.container {
@@ -66,9 +68,12 @@ a:visited {
   color: inherit;
 }
 
+.container-fluid{
+text-align: center;
 
+}
 nav {
-
+  z-index: 10;
   display: flex;
   justify-content: flex-end;
   height: 10vh;
@@ -91,12 +96,12 @@ nav {
 }
 
 .navbar-nav{
-justify-content: flex-end;
 margin-left: 40px;
 font-size: 18px;
 display: flex;
 gap: 1em;
 text-align: center;
+
 }
 
 .nav-item{
@@ -117,17 +122,34 @@ border-radius: 20%;
 background-color: var(--tertiary) !important;
 }
 
-.about-us{
-  font-size: 40px;
-  font-weight: 400;
+
+#start_btn{
+  margin-top: 10px;
+  margin-bottom: 10px;
+ position: absolute;
+  bottom:5px;
+  border-radius: 5px;
+  border: 3px solid #ffffff;
+  box-sizing: content-box;
+  box-shadow: -1px 3px 5px black;
+  background-color:var(--tertiary); 
+}
+
+#start_btn:hover{
+  color: var(--light);
+  background-color: var(--dark);
+}
+.form-control {
+  width: 80%;
+  margin-left: 40px;
 }
 /*Basic structure of slider*/
 .slide-container{
-  width:50%;
+  width:100%;
   position: absolute;
   transform: translate(-50%,-50%);
-  top: 40%;
-  left: 70%;
+  top: 50%;
+  left: 50%;
   overflow: hidden;
   border: 10px solid #ffffff;
   border-radius: 8px;
@@ -172,13 +194,40 @@ background-color: var(--tertiary) !important;
       transform: translateX(-300%);
   }
 }
+
+
+form.form-group{
+  width: 50%;
+}
+
+/* contact styles */
+.contact{
+  font-size: 30px;
+  font-weight: 400;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+/* login styles */
+.login-card{
+margin-top: 6%;
+margin-left: 25%;
+}
+.page-title{
+  font-size: 30px;
+  font-weight: 400;
+  margin-bottom: 3px;
+  margin-left: 2px;
+}
 /* Changes the background color and font color of the login-form and signup-form from login.js. */
 .login-form {
+  width: 50%;
   background-color: var(--primary);
   color: var(--light);
 }
 
 .signup-form {
+  width: 50%;
   background-color: var(--primary);
   color: var(--light);
 }
