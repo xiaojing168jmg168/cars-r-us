@@ -18,7 +18,7 @@ router.get("/", async (req, res) => {
         const cars = carData.map((car) => car.get({ plain: true }));
 
 
-        res.render("homepage", {
+        res.render("about-us", {
             cars,
             logged_in: req.session.logged_in
         })
