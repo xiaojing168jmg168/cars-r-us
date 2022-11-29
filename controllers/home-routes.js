@@ -5,14 +5,14 @@ const { User, Car } = require('../models');
 // Homepage Route
 router.get("/", async (req, res) => {
     try {
-        const carData = Car.findAll({
+        const carData = await Car.findAll({
             include: {
                 model: User,
                 attributes: ['name', 'email']
             }
         })
 
-        const cars = carData.map((user) => user.get({ plain: true }));
+        const cars = carData.map((car) => car.get({ plain: true }));
 
         res.render("homepage", {
             cars,
@@ -35,9 +35,9 @@ router.get('/signup', async (req, res) => {
 
 
 // result route
-router.get('/result', (req, res) => {
+router.get('/result', async (req, res) => {
     try{
-        const carData = Car.findAll({
+        const carData = await Car.findAll({
             include: {
                 model: User,
                 attributes: ['name', 'email']
@@ -63,22 +63,22 @@ router.get('/result', (req, res) => {
 
 
 // about-us route
-router.get('/about-us', (req, res) => {
+router.get('/about-us', async (req, res) => {
     res.render('about-us')
 })
 
 // contact-us route
-router.get('/contact-us', (req, res) => {
+router.get('/contact-us', async (req, res) => {
     res.render('contact-us')
 })
 
 //privacy-policy
-router.get('/privacy-policy', (req, res) => {
+router.get('/privacy-policy', async (req, res) => {
     res.render('privacy-policy')
 })
 
 // Login Route
-router.get('/login', (req, res) => {
+router.get('/login', async (req, res) => {
     if (req.session.logged_in) {
         res.redirect('/');
         return;
