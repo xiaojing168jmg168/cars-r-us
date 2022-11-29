@@ -9,8 +9,7 @@ router.get("/", async (req, res) => {
             include: {
                 model: User,
                 attributes: ['name', 'email']
-            },
-            limit: 10
+            }
         })
 
         const cars = carData.map((user) => user.get({ plain: true }));
