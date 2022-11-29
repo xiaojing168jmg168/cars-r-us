@@ -1,12 +1,16 @@
 :root {
-  --primary: #3d5852;
-  --secondary: #86938f;
-  --tertiary: #5e877f;
-  --quatrinary: #6c6b67;
+  --primary: #112B3C;
+  --secondary: #205375;
+  --tertiary: #F66B0E;
+  --quatrinary: #dcd9d9;
   --light: #e3e4e3;
   --dark: #182c23;
   --error: rgb(228, 46, 1);
   --border-radius: 0.3rem;
+}
+
+html{
+  height: 100%;
 }
 
 body {
@@ -16,8 +20,69 @@ body {
   flex-direction: column;
   min-height: 100vh;
   justify-content: flex-start;
-  background-color: var(--quatrinary);
+  background-color: var(--secondary);
 }
+
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  }
+/*Basic structure of slider*/
+.slide-container{
+  width: 70%;
+  position: absolute;
+  transform: translate(-50%,-50%);
+  top: 30%;
+  left: 50%;
+  overflow: hidden;
+  border: 10px solid #ffffff;
+  border-radius: 8px;
+  box-shadow: -1px 5px 15px black;
+}
+
+
+/*Area of images*/
+.slide-wrapper{
+  width: 100%;
+  display: flex;
+  animation: slide 16s infinite;
+}
+
+.slide-img{
+  width: 100%;
+}
+/*Animation activated by keyframes*/
+@keyframes slide{
+  0%{
+      transform: translateX(0);
+  }
+  25%{
+      transform: translateX(0);
+  }
+  30%{
+      transform: translateX(-100%);
+  }
+  50%{
+      transform: translateX(-100%);
+  }
+  55%{
+      transform: translateX(-200%);
+  }
+  75%{
+      transform: translateX(-200%);
+  }
+  80%{
+      transform: translateX(-300%);
+  }
+  100%{
+      transform: translateX(-300%);
+  }
+}
+
+
+
+
 
 a {
   color: var(--dark);
@@ -41,8 +106,6 @@ main {
   flex-grow: 1;
 }
 
-
-
 nav {
   display: flex;
   background-color: var(--secondary);
@@ -60,8 +123,6 @@ nav a:hover {
   background-color: var(--dark);
 }
 
-
-
 /* LAYOUT */
 .container {
   display: flex;
@@ -69,3 +130,77 @@ nav a:hover {
   align-content: flex-start;
   align-items: center;
 }
+
+/* Changes the background color and font color of the login-form and signup-form from login.js. */
+.login-form {
+  background-color: var(--primary);
+  color: var(--light);
+}
+
+.signup-form {
+  background-color: var(--primary);
+  color: var(--light);
+}
+
+/* Changes the background color and font color of the username-signup and password-signup from login.js. */
+#username-signup {
+  background-color: var(--light);
+  color: var(--tertiary);
+}
+
+#password-signup {
+  background-color: var(--light);
+  color: var(--tertiary);
+}
+
+/* Changes the background color and font color of the username-login and password-login from login.js. */
+#username-login {
+  background-color: var(--light);
+  color: var(--tertiary);
+}
+
+#password-login {
+  background-color: var(--light);
+  color: var(--tertiary);
+}
+
+/* Changes the background color and font color of the logout button from logout.js. As well as changing those colors while hovering the button. */
+button {
+  background-color: var(--secondary);
+  color: var(--light);
+}
+
+button:hover {
+  color: var(--secondary);
+  background-color: var(--dark);
+}
+
+
+/* footer */
+footer{
+  height: auto;
+  padding: 30px 0;
+}
+
+footer #footer-nav-container{
+  display: block;
+  text-align: center;
+}
+
+#footer-nav-container div{
+  display: inline-block;
+}
+
+footer a{
+  margin-right: 0;
+  padding: 0 1.5em;
+}
+
+footer .logo-wrapper{
+  width: 30%;
+}
+
+footer .logo {
+  margin-top: 2rem;
+}
+
