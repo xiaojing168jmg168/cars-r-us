@@ -1,20 +1,22 @@
 const router = require('express').Router();
-const { User } = require('../models');
-const withAuth = require('../utils/auth')
+const { User, Car } = require('../models');
 
 
 // Homepage Route
 router.get("/", async (req, res) => {
     try {
-        const userData = User.findAll({
-            attributes: { exclude: ['password'] },
-            order: [['name', 'ASC']],
+        const carData = Car.findAll({
+            include: {
+                model: User,
+                attributes: ['name', 'email']
+            },
+            limit: 10
         })
 
-        const users = userData.map((user) => user.get({ plain: true }));
+        const cars = carData.map((user) => user.get({ plain: true }));
 
         res.render("homepage", {
-            users,
+            cars,
             logged_in: req.session.logged_in
         })
     }
@@ -25,23 +27,13 @@ router.get("/", async (req, res) => {
 
 // signup page
 router.get('/signup', async (req, res) => {
-    res.render('singup')
+    if (req.session.logged_in) {
+        res.redirect('/dashboard');
+        return
+      }
+      res.render('signup')
 })
 
-// update car page
-router.get('/update-car/:id', async (req, res) => {
-    res.render('update-car')
-})
-
-// Dashboard page
-router.get('/dashboard', async (req, res) => {
-    res.render('dashboard')
-})
-
-// add car page
-router.get('/add-car', async (req, res) => {
-    res.render('add-car')
-})
 
 // result route
 router.get('/result', (req, res) => {
