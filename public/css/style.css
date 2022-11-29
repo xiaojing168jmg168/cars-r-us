@@ -183,8 +183,13 @@ background-color: var(--tertiary) !important;
   color: var(--light);
 }
 
-/* Changes the background color and font color of the username-signup and password-signup from login.js. */
-#username-signup {
+/* Changes the background color and font color of the name-signup, email-signup, and password-signup from login.js. */
+#name-signup {
+  background-color: var(--light);
+  color: var(--tertiary);
+}
+
+#email-signup {
   background-color: var(--light);
   color: var(--tertiary);
 }
@@ -194,8 +199,8 @@ background-color: var(--tertiary) !important;
   color: var(--tertiary);
 }
 
-/* Changes the background color and font color of the username-login and password-login from login.js. */
-#username-login {
+/* Changes the background color and font color of the email-login and password-login from login.js. */
+#email-login {
   background-color: var(--light);
   color: var(--tertiary);
 }
@@ -205,7 +210,7 @@ background-color: var(--tertiary) !important;
   color: var(--tertiary);
 }
 
-/* Changes the background color and font color of the logout button from logout.js. As well as changing those colors while hovering the button. */
+/* Changes the background color and font color of all buttons on the sign up and login page. As well as changing those colors while hovering the buttons. */
 button {
   background-color: var(--secondary);
   color: var(--light);
