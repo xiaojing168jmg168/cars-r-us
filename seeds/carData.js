@@ -2,7 +2,7 @@ const {Car} = require('../models');
 
 const carData = [
     {
-        image: ['https://res.cloudinary.com/dfe0rjexj/image/upload/v1669079800/Image_not_Available_uocgt8.jpg'],
+        image: 'https://res.cloudinary.com/dfe0rjexj/image/upload/v1669079800/Image_not_Available_uocgt8.jpg',
         brand: 'Dodge',
         model: 'Challenger',
         year: 2018,
@@ -11,7 +11,7 @@ const carData = [
         user_id: 1
     },
     {
-        image: ['https://res.cloudinary.com/dfe0rjexj/image/upload/v1669079800/Image_not_Available_uocgt8.jpg'],
+        image: 'https://res.cloudinary.com/dfe0rjexj/image/upload/v1669079800/Image_not_Available_uocgt8.jpg',
         brand: 'BMW',
         model: '330i',
         year: 2023,
@@ -20,7 +20,7 @@ const carData = [
         user_id: 2
     },
     {
-        image: ['https://res.cloudinary.com/dfe0rjexj/image/upload/v1669079800/Image_not_Available_uocgt8.jpg'],
+        image: 'https://res.cloudinary.com/dfe0rjexj/image/upload/v1669079800/Image_not_Available_uocgt8.jpg',
         brand: 'Mitsubishi',
         model: '3000gt VR-4',
         year: 1993,
