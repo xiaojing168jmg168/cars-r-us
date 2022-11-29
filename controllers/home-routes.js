@@ -2,8 +2,13 @@ const router = require('express').Router();
 const { User, Car } = require('../models');
 
 
-// Homepage Route
-router.get("/", async (req, res) => {
+// Landing page route
+router.get('/', async (req, res) => {
+    res.render('about-us')
+})
+
+// Home Route
+router.get("/home", async (req, res) => {
     try {
         const carData = await Car.findAll({
             include: {
@@ -62,10 +67,6 @@ router.get('/result', async (req, res) => {
 })
 
 
-// about-us route
-router.get('/about-us', async (req, res) => {
-    res.render('about-us')
-})
 
 // contact-us route
 router.get('/contact-us', async (req, res) => {
