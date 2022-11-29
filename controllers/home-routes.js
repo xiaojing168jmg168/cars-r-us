@@ -10,14 +10,18 @@ router.get('/', async (req, res) => {
 // Home Route
 router.get("/home", async (req, res) => {
     try {
+
         const carData = await Car.findAll({
+
             include: {
                 model: User,
                 attributes: ['name', 'email']
             }
         })
 
+
         const cars = carData.map((car) => car.get({ plain: true }));
+
 
         res.render("homepage", {
             cars,
@@ -40,9 +44,11 @@ router.get('/signup', async (req, res) => {
 
 
 // result route
+
 router.get('/result', async (req, res) => {
     try{
         const carData = await Car.findAll({
+
             include: {
                 model: User,
                 attributes: ['name', 'email']
@@ -69,12 +75,16 @@ router.get('/result', async (req, res) => {
 
 
 // contact-us route
+
 router.get('/contact-us', async (req, res) => {
+
     res.render('contact-us')
 })
 
 //privacy-policy
+
 router.get('/privacy-policy', async (req, res) => {
+
     res.render('privacy-policy')
 })
 
