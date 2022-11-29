@@ -2,8 +2,13 @@ const router = require('express').Router();
 const { User, Car } = require('../models');
 
 
-// Homepage Route
-router.get("/", async (req, res) => {
+// Landing page route
+router.get('/', async (req, res) => {
+    res.render('about-us')
+})
+
+// Home Route
+router.get("/buy", async (req, res) => {
     try {
 
         const carData = await Car.findAll({
@@ -17,8 +22,9 @@ router.get("/", async (req, res) => {
 
         const cars = carData.map((car) => car.get({ plain: true }));
 
+        console.log(cars);
 
-        res.render("about-us", {
+        res.render("homepage", {
             cars,
             logged_in: req.session.logged_in
         })
@@ -30,22 +36,10 @@ router.get("/", async (req, res) => {
 
 // signup page
 router.get('/signup', async (req, res) => {
-    res.render('singup')
+    res.render('signup')
 })
-
-// update car page
-router.get('/update-car/:id', async (req, res) => {
-    res.render('update-car')
-})
-
-// Dashboard page
-router.get('/dashboard', async (req, res) => {
-    res.render('dashboard')
-})
-
 
 // result route
-
 router.get('/result', async (req, res) => {
     try{
         const carData = await Car.findAll({
@@ -73,27 +67,16 @@ router.get('/result', async (req, res) => {
     }
 })
 
-
-// about-us route
-
-router.get('/about-us', async (req, res) => {
-
-    res.render('about-us')
-})
-
 // contact-us route
-
 router.get('/contact-us', async (req, res) => {
-
     res.render('contact-us')
 })
 
 //privacy-policy
-
 router.get('/privacy-policy', async (req, res) => {
-
     res.render('privacy-policy')
 })
+
 // Login Route
 router.get('/login', async (req, res) => {
     if (req.session.logged_in) {
