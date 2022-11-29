@@ -11,10 +11,9 @@ Car.init(
       primaryKey: true,
       autoIncrement: true,
     },
-    // image:{
-    //   type: DataTypes.Image,
-    //   allowNull: false,
-    // },
+    image:{
+      type: DataTypes.STRING,
+    },
     brand: {
       type: DataTypes.STRING,
       allowNull: false,
@@ -24,7 +23,7 @@ Car.init(
       allowNull: false,
     },
     year: {
-      type: DataTypes.DATE,
+      type: DataTypes.INTEGER,
       allowNull: false,
     },
     mileage: {
@@ -35,6 +34,13 @@ Car.init(
       type: DataTypes.DECIMAL,
       allowNull: false,
     },
+    user_id: {
+      type: DataTypes.INTEGER,
+      references:{
+         model:'User',
+         key:'id'
+      }
+    }
   },
   {
     sequelize,
