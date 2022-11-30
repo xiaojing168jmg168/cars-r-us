@@ -1,33 +1,57 @@
+let image;
+let car_image = document.querySelector("#car-image-new")
 async function addCarHandler(event) {
-    event.preventDefault();
-  
-    const image = document.querySelector('input[name="image"]').value;
-    const brand = document.querySelector('input[name="brand"]').value;
-    const model = document.querySelector('input[name="model"]').value;
-    const year = document.querySelector('input[name="year"]').value;
-    const mileage = document.querySelector('input[name="mileage"]').value;
-    const price = document.querySelector('input[name="price"]').value;
-    
-    const response = await fetch("/api/post", {
-      method: "POST",
-      body: JSON.stringify({
-        image,
-        brand,
-        model,
-        year,
-        mileage,
-        price,
-      }),
-      headers: {
-        "Content-Type": "application/json",
-      },
-    });
-  
-    if (response.ok) {
-      document.location.replace("/dashboard");
-    } else {
-      alert(response.statusText);
-    }
+  event.preventDefault();
+
+  let brand = document.querySelector('#brandInput').value;
+  const model = document.querySelector('#modelInput').value.trim();
+  const year = parseInt(document.querySelector('#yearInput').value.trim());
+  const mileage = parseFloat(document.querySelector('#mileageInput').value.trim());
+  const price = parseFloat(document.querySelector('#priceInput').value.trim());
+
+  if (!image) {
+    image = "https://res.cloudinary.com/dfe0rjexj/image/upload/v1669079800/Image_not_Available_uocgt8.jpg"
   }
-  
-    document.querySelector("#add-car-form").addEventListener("submit", addCarHandler);
+  console.log(image, brand,model,year,mileage,price)
+  const response = await fetch("/api/cars/newCar", {
+    method: "POST",
+    body: JSON.stringify({
+      image,
+      brand,
+      model,
+      year,
+      mileage,
+      price,
+    }),
+    headers: {
+      "Content-Type": "application/json",
+    },
+  });
+  console.log(response)
+  if (response.ok) {
+    document.location.replace("/sale");
+  } else {
+    alert(response.statusText);
+  }
+}
+
+document.querySelector("#add-car-form").addEventListener("submit", addCarHandler);
+
+
+var myWidget = cloudinary.createUploadWidget({
+  cloudName: 'dfe0rjexj',
+  uploadPreset: 'cars-r-us',
+  maxFiles: 1
+}, (error, result) => {
+  if (!error && result && result.event === "success") {
+    // console.log('Done! Here is the image info: ', result.info); 
+    image = result.info.url
+    car_image.src = image
+    console.log(image)
+  }
+}
+)
+
+document.getElementById("upload_widget").addEventListener("click", function () {
+  myWidget.open();
+}, false);
