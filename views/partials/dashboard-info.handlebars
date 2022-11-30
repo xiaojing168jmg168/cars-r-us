@@ -1,0 +1,16 @@
+ <div class="card col-4" style="width: 18rem;">
+        <img class="card-img-top" src="{{image}}" alt="Car Image">
+        <div class="card-body">
+            <h5 class="card-title">{{brand}}</h5>
+        </div>
+        <ul class="list-group list-group-flush">
+            <li class="list-group-item">{{model}}</li>
+            <li class="list-group-item">{{year}}</li>
+            <li class="list-group-item">Mileage: {{mileage}}mi</li>
+            <li class="list-group-item">${{price}}</li>
+        </ul>
+        <div class="card-body">
+            <a class="btn btn-primary" href="/sale/update-car/{{{id}}}">Update</a>
+            <button class="btn btn-primary" id="delete-btn">Delete</button>
+        </div>
+    </div>

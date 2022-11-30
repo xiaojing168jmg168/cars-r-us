@@ -1,8 +1,12 @@
 async function updateFormHandler(event) {
     event.preventDefault();
 
-    const title = document.querySelector('input[name="post-title"]').value.trim();
-    const content = document.querySelector('input[name="content"]').value.trim();
+    const image = document.querySelector('input[name="car-image"]').value.trim();
+    const brand = document.querySelector('input[name="car-brand"]').value.trim();
+    const model = document.querySelector('input[name="car-model"]').value.trim();
+    const year = document.querySelector('input[name="car-year"]').value.trim();
+    const mileage = document.querySelector('input[name="car-mileage"]').value.trim();
+    const price = document.querySelector('input[name="car-price"]').value.trim();
     const id = window.location.toString().split("/")[
       window.location.toString().split("/").length - 1
     ];
@@ -10,9 +14,13 @@ async function updateFormHandler(event) {
       const response = await fetch("/api/posts/${id}", {
         method: "PUT",
         body: JSON.stringify({
-          post_id: id,
-          title,
-          content
+          car_id: id,
+          image,
+          brand,
+          model,
+          year,
+          mileage,
+          price
         }),
         headers: {
           "Content-Type": "application/json"
@@ -20,11 +28,11 @@ async function updateFormHandler(event) {
       });
       
       if (response.ok) {
-        document.location.replace("/dashboard/");
+        document.location.replace("/dashboard");
       } else {
         alert(response.statusText);
       }
 }
 
-document.querySelector(".update-post-form")
+document.querySelector(".update-car-form")
 document.addEventListener("submit", updateFormHandler);

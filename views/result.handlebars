@@ -1,0 +1,19 @@
+<div class="container result-cars">
+    {{#each cars as |car|}}
+    <div class="card col-4" style="width: 18rem;">
+        <img class="card-img-top" src="{{image}}" alt="Car Image">
+        <div class="card-body">
+            <h5 class="card-title">{{brand}}</h5>
+        </div>
+        <ul class="list-group list-group-flush">
+            <li class="list-group-item">{{brand}}</li>
+            <li class="list-group-item">{{model}}</li>
+            <li class="list-group-item">${{price}}</li>
+            <li class="list-group-item">Mileage: {{mileage}} mi</li>
+        </ul>
+        
+    </div>
+    {{/each}}
+</div>
+
+<script src="./js/search.js"></script>
