@@ -30,6 +30,9 @@ const carData = [
     },
 ];
 
-const seedCars = () => Car.bulkCreate(carData);
+const seedCars = () => Car.bulkCreate(carData, {
+    individualHooks: true,
+    returning: true,
+});
 
 module.exports = seedCars;

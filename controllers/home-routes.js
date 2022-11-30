@@ -4,7 +4,7 @@ const { User, Car } = require('../models');
 
 // Landing page route
 router.get('/', async (req, res) => {
-    res.render('about-us')
+    res.render('about-us', { logged_in: req.session.logged_in})
 })
 
 // Home Route
@@ -29,19 +29,24 @@ router.get("/buy", async (req, res) => {
             logged_in: req.session.logged_in
         })
     }
-    catch (err){
+    catch (err) {
         res.status(500).send(err)
     }
 })
 
 // signup page
 router.get('/signup', async (req, res) => {
-    res.render('signup')
+    if (req.session.logged_in) {
+        res.redirect('/');
+        return;
+    }
+
+    res.render('signup');
 })
 
 // result route
 router.get('/result', async (req, res) => {
-    try{
+    try {
         const carData = await Car.findAll({
 
             include: {
@@ -57,10 +62,10 @@ router.get('/result', async (req, res) => {
         })
 
         // Serialize Car Data
-        const cars = carData.map((car) => car.get({plain: true}))
+        const cars = carData.map((car) => car.get({ plain: true }))
 
         // Render results page while sending logged_in and card to the view
-        res.render('result', {cars, logged_in: req.session.logged_in})
+        res.render('result', { cars, logged_in: req.session.logged_in })
     }
     catch (err) {
         res.status(500).json(err);
@@ -69,23 +74,22 @@ router.get('/result', async (req, res) => {
 
 // contact-us route
 router.get('/contact-us', async (req, res) => {
-    res.render('contact-us')
+    res.render('contact-us', { logged_in: req.session.logged_in })
 })
 
 //privacy-policy
 router.get('/privacy-policy', async (req, res) => {
-    res.render('privacy-policy')
+    res.render('privacy-policy', { logged_in: req.session.logged_in })
 })
 
 // Login Route
 router.get('/login', async (req, res) => {
     if (req.session.logged_in) {
-      res.redirect('/');
-      return;
+        res.redirect('/');
+        return;
     }
-  
+
     res.render('login');
-  });
-  
-  module.exports = router;
-  
+});
+
+module.exports = router;
