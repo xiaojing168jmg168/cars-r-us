@@ -5,7 +5,7 @@ const withAuth = require('../utils/auth')
 
 
 // home dahsboard route
-router.get('/', async (req, res) => {
+router.get('/', withAuth, async (req, res) => {
     try {
         const carData = await Car.findAll({
             include: {
@@ -30,7 +30,7 @@ router.get('/', async (req, res) => {
 })
 
 // update car listing
-router.get('/update-car/:id', async (req, res) => {
+router.get('/update-car/:id', withAuth, async (req, res) => {
     try {
         const id = parseInt(req.params.id);
         const carData = await Car.findByPk(id, {
@@ -50,7 +50,7 @@ router.get('/update-car/:id', async (req, res) => {
 
 
 // add car page
-router.get('/add-car', async (req, res) => {
+router.get('/add-car', withAuth, async (req, res) => {
     if (req.session.logged_in){
         res.render('add-car', {logged_in: req.session.logged_in})
     } else {
