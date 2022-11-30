@@ -1,16 +1,20 @@
 const deleteCarHandler = async function (event) {
-    event.preventDefault();
-    const postId = document.getElementById("car-id");
-  
-    fetch("/api/car/" + postId.value, {
+  event.preventDefault();
+  if (event.target.hasAttribute('data-id')) {
+    const id = event.target.getAttribute('data-id');
+    const response = await fetch("/api/cars/" + id, {
       method: "DELETE",
     })
-      .then(function () {
-        document.location.replace("/dashboard");
-      })
-      .catch((err) => console.log(err));
+
+    console.log(response)
+
+    if (!response.ok) {
+      document.location.reload();
+    } else {
+      alert("Failed to delete Car listing")
+    }
   };
-  
-  document
-    .querySelector("#delete-btn")
-    .addEventListener("click", deleteCarHandler);
+}
+document
+  .querySelector("#delete-btn")
+  .addEventListener("click", deleteCarHandler);

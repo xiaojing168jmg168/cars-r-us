@@ -11,7 +11,7 @@ async function updateFormHandler(event) {
       window.location.toString().split("/").length - 1
     ];
       
-      const response = await fetch("/api/posts/${id}", {
+      const response = await fetch(`/api/cars/${id}`, {
         method: "PUT",
         body: JSON.stringify({
           car_id: id,
@@ -36,3 +36,25 @@ async function updateFormHandler(event) {
 
 document.querySelector(".update-car-form")
 document.addEventListener("submit", updateFormHandler);
+
+
+const deleteCarHandler = async function (event) {
+  event.preventDefault();
+  if (event.target.hasAttribute('data-id')) {
+    const id = event.target.getAttribute('data-id');
+    const response = await fetch("/api/cars/" + id, {
+      method: "DELETE",
+    })
+
+    console.log(response)
+
+    if (!response.ok) {
+      document.location.replace("/sale");
+    } else {
+      alert("Failed to delete Car listing")
+    }
+  };
+}
+document
+  .querySelector("#delete-btn")
+  .addEventListener("click", deleteCarHandler);
