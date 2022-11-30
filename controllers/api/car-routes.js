@@ -74,10 +74,37 @@ router.delete('/:id', async (req, res) => {
 // Route to update a car listing
 router.put('/:id', async (req, res) => {
     try {
+        const image = req.body.image;
+        let img;
+
+        const oldCarData = await Car.findByPk({id:req.params.id})
+        const oldCar = oldCarData.get({plain: true})
+
+        if (req.body.image){
+            cloudinary.uploader
+                .upload(image, {
+                    resource_type: "image",
+                })
+                .then((result) => {
+                    img = result.url;
+                })
+                .catch((err) => {
+                    console.log(err);
+                })
+        }
+        // What to do if no images are found
+        else {
+            img = oldCar.image;
+        }
+
         const carData = await Car.update(
             {
-                title: req.body.title,
-                content: req.body.content
+                brand: req.body.brand,
+                image: img,
+                model: req.body.model,
+                year: req.body.year,
+                mileage: req.body.mileage,
+                price: req.body.price
             }, {
             where: {
                 id: req.params.id,
