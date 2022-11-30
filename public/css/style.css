@@ -88,7 +88,7 @@ nav {
   margin: 10px 10px;
   width: 100px;
   height: 40px;
-  display: inline-block;
+  display:flex
 }
 
 .logo:hover{
@@ -280,7 +280,7 @@ footer{
 
 footer #footer-nav-container{
    color:var(--quatrinary);
-  display: block;
+  /* display: block; */
   text-align: center;
 }
 
