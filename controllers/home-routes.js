@@ -2,12 +2,12 @@ const router = require('express').Router();
 const { User, Car } = require('../models');
 
 
-// Landing page route
+// Landing page/about-us route
 router.get('/', async (req, res) => {
     res.render('about-us', { logged_in: req.session.logged_in})
 })
 
-// Home Route
+// buy Route
 router.get("/buy", async (req, res) => {
     try {
 
@@ -46,30 +46,7 @@ router.get('/signup', async (req, res) => {
 
 // result route
 router.get('/result', async (req, res) => {
-    try {
-        const carData = await Car.findAll({
-
-            include: {
-                model: User,
-                attributes: ['name', 'email']
-            },
-            where: {
-                brand: req.body.brand,
-                model: req.body.model,
-                year: req.body.year,
-                mileage: req.body.mileage,
-            }
-        })
-
-        // Serialize Car Data
-        const cars = carData.map((car) => car.get({ plain: true }))
-
-        // Render results page while sending logged_in and card to the view
-        res.render('result', { cars, logged_in: req.session.logged_in })
-    }
-    catch (err) {
-        res.status(500).json(err);
-    }
+    res.render('result', {logged_in: req.session.logged_in} )
 })
 
 // contact-us route

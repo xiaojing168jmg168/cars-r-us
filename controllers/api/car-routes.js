@@ -91,4 +91,23 @@ router.put('/:id', async (req, res) => {
     }
 })
 
+// Search api Route
+router.get('/search/brand=:brand&model=:model&year=:year&mileage=:mileage', async (req, res) => {
+    try{
+        const carData = await Car.findAll({
+            where: {
+                brand: req.params.brand,
+                model: req.params.model,
+                year: req.params.year,
+                mileage: req.params.mileage
+            }
+        })
+        const cars = carData.map((car) => car.get({plain: 'true'}))
+        res.status(200).json(cars)
+    }
+    catch (err){
+        res.status(500).json(err)
+    }
+})
+
 module.exports = router;
