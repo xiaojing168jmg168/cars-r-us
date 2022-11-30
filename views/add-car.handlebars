@@ -1,13 +1,31 @@
-<div class=“card” style=“width: 18rem;“>
-  <img src=“...” class=“card-img-top” alt=“...“>
-  <div class=“card-body”>
-    <h5 class=“card-title”>{{year}}, {{brand}}</h5>
-  </div>
-  <ul class=“list-group list-group-flush”>
-    <li class=“list-group-item”>{{model}}</li>
-    <li class=“list-group-item”>${{price}}</li>
-    <li class=“list-group-item”>{{mileage}} mi</li>
-  </ul>
-</div>
+<h2 class="card-header">Create Your Car info</h2>
 
+<form class="card-body new-post-form" id="new-post-form" method="POST" enctype="multipart/form-data">
+
+  <div class="form-row">
+    <label for="upload"> image:</label>
+    <input type="file" name="upload" id="upload" class="form-input form-control">
+  </div>
+  <div class="form-row">
+    <label class="form-label" for="brand">Brand</label>
+    <input id="brand" name="brand" class="form-input form-control" />
+  </div>
+  <div class="form-row">
+    <label class="form-label" for="model">Model</label>
+    <input id="model" name="model" class="form-input form-control" />
+  </div>
+  <div class="form-row">
+    <label class="form-label" for="year">Year</label>
+    <input id="year" name="year" class="form-input form-control" />
+  </div>
+  <div class="form-row">
+    <label class="form-label" for="mileage">Mileage</label>
+    <input id="mileage" name="mileage" class="form-input form-control" />
+  </div>
+  <div class="form-row">
+    <label class="form-label" for="price">Price</label>
+    <input id="price" name="price" class="form-input form-control" />
+  </div>
+  <button type="submit" class="btn">Create</button>
+</form>
 <script src="./js/add-car.js"></script>
