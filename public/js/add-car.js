@@ -3,7 +3,7 @@ let car_image = document.querySelector("#car-image-new")
 async function addCarHandler(event) {
   event.preventDefault();
 
-  let brand = document.querySelector('#brandInput').value;
+  const brand = document.querySelector('#brandInput').value;
   const model = document.querySelector('#modelInput').value.trim();
   const year = parseInt(document.querySelector('#yearInput').value.trim());
   const mileage = parseFloat(document.querySelector('#mileageInput').value.trim());
@@ -27,7 +27,6 @@ async function addCarHandler(event) {
       "Content-Type": "application/json",
     },
   });
-  console.log(response)
   if (response.ok) {
     document.location.replace("/sale");
   } else {

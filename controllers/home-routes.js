@@ -44,19 +44,13 @@ router.get('/signup', async (req, res) => {
     res.render('signup');
 })
 
-// result route
-router.get('/result', async (req, res) => {
-    res.render('result', { logged_in: req.session.logged_in })
-})
-
-router.get('/search/?:brand&:model&:year&:mileage', async (req, res) => {
+// Search route
+router.get('/search/:brand', async (req, res) => {
     try {
         console.log(`Hello World`)
         const carData = await Car.findAll({
             where: {
                 brand: req.params.brand,
-                model: req.params.model,
-                year: req.params.year,
             }, include: {
                 model: User,
                 attributes: ['name', 'email']

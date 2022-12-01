@@ -6,8 +6,8 @@ const withAuth = require('../../utils/auth');
 const cloudinary = require("cloudinary").v2
 require("dotenv").config();
 console.log(cloudinary.config({
-    cloud_name: 'dfe0rjexj', 
-    api_key: '742987661832851', 
+    cloud_name: 'dfe0rjexj',
+    api_key: '742987661832851',
     api_secret: 'zIzYR1-8had9vwTDlmnWo4DyHlo'
 }));
 
@@ -56,7 +56,7 @@ router.delete('/:id', async (req, res) => {
 
 // Route to update a car listing
 router.put('/:id', async (req, res) => {
-    try {      
+    try {
 
         const carData = await Car.update(
             {
@@ -80,25 +80,21 @@ router.put('/:id', async (req, res) => {
 })
 
 // Search api Route
-router.get('/search/:brand&:model&:year&:mileage', async (req, res) => {
-    try{
-        console.log("World end")
+router.get('/search/:brand', async (req, res) => {
+    try {
         const carData = await Car.findAll({
             where: {
                 brand: req.params.brand,
-                model: req.params.model,
-                year: req.params.year,
-                mileage: req.params.mileage
             },
             include: {
                 model: User,
                 attributes: ['name', 'email']
             }
         })
-        const cars = carData.map((car) => car.get({plain: 'true'}))
+        const cars = carData.map((car) => car.get({ plain: 'true' }))
         res.status(200).json(cars)
     }
-    catch (err){
+    catch (err) {
         res.status(500).json(err)
     }
 })
