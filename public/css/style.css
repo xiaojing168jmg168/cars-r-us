@@ -60,7 +60,7 @@ h1,h2,h3,h4,h5,h6{
 }
 
 main.container {
-  margin-top: 5px;
+
   height: auto;
   overflow: hidden;
 }
@@ -195,8 +195,10 @@ background-color: var(--tertiary) !important;
       transform: translateX(-300%);
   }
 }
-
-
+/* buy page style */
+.buy-cars{
+  margin-top: 15px;
+}
 form.form-group{
   width: 50%;
 }
