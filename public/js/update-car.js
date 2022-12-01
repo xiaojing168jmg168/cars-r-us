@@ -1,37 +1,39 @@
-async function updateFormHandler(event) {
-    event.preventDefault();
+let image;
+let car_image = document.querySelector("#car-image-new")
 
-    const image = document.querySelector('input[name="car-image"]').value.trim();
-    const brand = document.querySelector('input[name="car-brand"]').value.trim();
-    const model = document.querySelector('input[name="car-model"]').value.trim();
-    const year = document.querySelector('input[name="car-year"]').value.trim();
-    const mileage = document.querySelector('input[name="car-mileage"]').value.trim();
-    const price = document.querySelector('input[name="car-price"]').value.trim();
-    const id = window.location.toString().split("/")[
-      window.location.toString().split("/").length - 1
-    ];
-      
-      const response = await fetch(`/api/cars/${id}`, {
-        method: "PUT",
-        body: JSON.stringify({
-          car_id: id,
-          image,
-          brand,
-          model,
-          year,
-          mileage,
-          price
-        }),
-        headers: {
-          "Content-Type": "application/json"
-        }
-      });
-      
-      if (response.ok) {
-        document.location.replace("/dashboard");
-      } else {
-        alert(response.statusText);
-      }
+async function updateFormHandler(event) {
+  event.preventDefault();
+
+  const brand = document.querySelector('#brandInput').value;
+  const model = document.querySelector('#modelInput').value.trim();
+  const year = parseInt(document.querySelector('#yearInput').value.trim());
+  const mileage = parseFloat(document.querySelector('#mileageInput').value.trim());
+  const price = parseFloat(document.querySelector('#priceInput').value.trim());
+  const id = document.querySelector('#delete-btn').dataset.id;
+
+
+  console.log(id)
+
+  const response = await fetch(`/api/cars/${id}`, {
+    method: "PUT",
+    body: JSON.stringify({
+      image,
+      brand,
+      model,
+      year,
+      mileage,
+      price
+    }),
+    headers: {
+      "Content-Type": "application/json"
+    }
+  });
+
+  if (response.ok) {
+    document.location.replace("/sale");
+  } else {
+    alert(response.statusText);
+  }
 }
 
 document.querySelector(".update-car-form")
@@ -58,3 +60,21 @@ const deleteCarHandler = async function (event) {
 document
   .querySelector("#delete-btn")
   .addEventListener("click", deleteCarHandler);
+
+
+// Cloudinary Widget 
+var myWidget = cloudinary.createUploadWidget({
+  cloudName: 'dfe0rjexj',
+  uploadPreset: 'cars-r-us',
+  maxFiles: 1
+}, (error, result) => {
+  if (!error && result && result.event === "success") {
+    image = result.info.url
+    car_image.src = image
+  }
+}
+)
+
+document.getElementById("upload_widget").addEventListener("click", function () {
+  myWidget.open();
+}, false);
