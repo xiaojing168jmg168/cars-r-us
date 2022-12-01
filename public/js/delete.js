@@ -6,8 +6,6 @@ const deleteCarHandler = async function (event) {
       method: "DELETE",
     })
 
-    console.log(response)
-
     if (!response.ok) {
       document.location.reload();
     } else {
