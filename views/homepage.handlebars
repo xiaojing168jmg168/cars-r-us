@@ -1,7 +1,11 @@
-<section class="container">
-{{#each cars as |car| }}
-<article class="car">
-    {{> car-info car}}
-</article>
-{{/each}}
+<section class="container text-center buy-cars">
+    <div class="row align-items-start">
+
+        {{#each cars as |car| }}
+        <div class="col car">
+
+            {{> car-info car}}
+        </div>
+        {{/each}}
+    </div>
 </section>

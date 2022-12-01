@@ -43,6 +43,10 @@ router.get('/signup', async (req, res) => {
 
     res.render('signup');
 })
+router.get('/sale',async(req,res)=>{
+    res.redirect('/login');
+    return;
+})
 
 // result route
 router.get('/result', async (req, res) => {
