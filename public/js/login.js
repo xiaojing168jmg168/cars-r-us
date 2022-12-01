@@ -13,7 +13,7 @@ const loginFormHandler = async (event) => {
     console.log(response)
 
     if (response.ok) {
-      document.location.replace('/sale');
+      document.location.href='/sale';
     } else {
       alert('Failed to log in.');
     }
