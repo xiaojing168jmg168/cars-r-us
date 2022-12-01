@@ -33,7 +33,7 @@
   ## License
   https://opensource.org/licenses/ISC
 
-  ## Question(s)
+  ## Questions
   If you have any questions about this project you can reach us at:
   * GitHub: 
 
