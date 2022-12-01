@@ -13,7 +13,7 @@ const signupFormHandler = async (event) => {
       });
   
       if (response.ok) {
-        document.location.replace('/sale');
+        document.location.href='/sale';
       } else {
         alert('Failed to sign up.');
       }
