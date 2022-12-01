@@ -30,7 +30,7 @@ async function updateFormHandler(event) {
   });
 
   if (response.ok) {
-    document.location.replace("/sale");
+    document.location.href="/sale";
   } else {
     alert(response.statusText);
   }
@@ -51,7 +51,7 @@ const deleteCarHandler = async function (event) {
     console.log(response)
 
     if (!response.ok) {
-      document.location.replace("/sale");
+      document.location.href = "/sale";
     } else {
       alert("Failed to delete Car listing")
     }

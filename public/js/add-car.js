@@ -28,7 +28,7 @@ async function addCarHandler(event) {
     },
   });
   if (response.ok) {
-    document.location.replace("/sale");
+    document.location.href="/sale";
   } else {
     alert(response.statusText);
   }
