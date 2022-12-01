@@ -1,6 +1,9 @@
-<div class="container result-cars">
+
+    <div class="container text-center cars">
+    <div class="row align-items-start">
     {{#each cars as |car|}}
-    <div class="card col-4" style="width: 18rem;">
+    <div class="col car">
+    <div class="card" style="width: 18rem;">
         <img class="card-img-top" src="{{image}}" alt="Car Image">
         <div class="card-body">
             <h5 class="card-title">{{brand}}</h5>
@@ -11,9 +14,9 @@
             <li class="list-group-item">Mileage: {{mileage}} mi</li>
             <li class="list-group-item">Name: {{user.name}}<br>Contact:{{user.email}}</li>
         </ul>
-
+</div>
     </div>
     {{/each}}
 </div>
-
+</div>
 <script src="./js/search.js"></script>
