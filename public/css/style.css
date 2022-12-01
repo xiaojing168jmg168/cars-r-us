@@ -340,3 +340,7 @@ footer .logo {
 #car-image-new{
   max-width: 100%;
 }
+
+#signup-btn:hover{
+  text-decoration: none
+}
