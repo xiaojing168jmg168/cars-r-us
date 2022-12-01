@@ -2,6 +2,7 @@ const deleteCarHandler = async function (event) {
   event.preventDefault();
   if (event.target.hasAttribute('data-id')) {
     const id = event.target.getAttribute('data-id');
+    console.log(id);
     const response = await fetch("/api/cars/" + id, {
       method: "DELETE",
     })

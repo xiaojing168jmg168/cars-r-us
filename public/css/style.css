@@ -85,7 +85,7 @@ nav {
   color: #F66B0E !important;
   font-weight: 700;
   padding: 10px 10px;
-  margin: 10px 10px;
+  margin-left: 45px;
   width: 100px;
   height: 40px;
   display: inline-block;
@@ -118,7 +118,7 @@ nav a {
 }
 
 nav a:hover {
-border-radius: 20%;
+border-radius: 5%;
 background-color: var(--tertiary) !important;
 }
 
@@ -153,6 +153,21 @@ background-color: var(--tertiary) !important;
   height:289px;
 }
 
+.add-car{
+  font-size: 40px;
+  font-weight: 400;
+  margin-bottom: 15px;
+}
+
+.update-car{
+  font-size: 40px;
+  font-weight: 400;
+  margin-bottom: 15px;
+}
+.saler-title{
+  font-size: 40px;
+  font-weight: 400;
+}
 /*Basic structure of slider*/
 .slide-container{
   width:100%;
