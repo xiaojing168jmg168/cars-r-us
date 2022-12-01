@@ -4,33 +4,90 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Tech Blog</title>
+  <title>cars r us</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+  
   <link rel="stylesheet" type="text/css" href="/css/jass.css">
   <link rel="stylesheet" type="text/css" href="/css/style.css">
+
+  <script defer src="https://use.fontawesome.com/releases/v5.3.1/js/all.js"></script>
 </head>
 
 <body>
-  <header>
-    <h1>The Tech Blog</h1>
-  </header>
-  <nav>
-    <a href="/">Home</a>
-    <a href="/Dashboard">Dashboard</a>
-    {{#if loggedIn}}
-    <button id="logout" class="btn-no-style">Logout</button>
-    {{else}}
-    <a href="/login">Login</a>
-    {{/if}}
-  </nav>
-  <main>
-  
-    <div class="blog">
-      {{{body}}}
+
+    <header class="row">
+
+ <nav class="navbar navbar-expand-lg bg-dark">
+  <div class="container-fluid">
+    <a class="navbar-brand logo bg-dark" href="about-us">Car-R-Us</a>
+    <button class="navbar-toggler bg-light" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav bg-dark me-auto mb-2 mb-lg-0">
+        <li class="nav-item bg-dark">
+          <a class="nav-link" href="about-us">About Us</a>
+        </li>
+        <li class="nav-item bg-dark">
+          <a class="nav-link" href="/">Buy</a>
+        </li>
+         <li class="nav-item bg-dark">
+          <a class="nav-link" href="/dashboard">Sale</a>
+        </li>
+         {{#if loggedIn}}
+          <li class="nav-item bg-dark"><a class="nav-link" href="/" id="logout">Logout</a></li>
+          {{else}}
+          <li class="nav-item bg-dark"><a class="nav-link" href="/login">Login</a></li>
+
+          {{/if}}
+          <li class="nav-item bg-dark"><a class="nav-link" href="/contact-us">Contact Us</a></li>
+           <li class="nav-item bg-dark"><a class="nav-link" href="/privacy-policy">Privacy Policy</a></li>
+       
+      </ul>
+      <form class="d-flex" role="search">
+        <input class="form-control me-2" type="search" placeholder="Search by Model" aria-label="Search">
+        <button class="btn btn-outline-success" type="submit">Search</button>
+      </form>
     </div>
-  </main>
-  {{#if loggedIn}}
-  <script src="/js/logout.js"></script>
-  {{/if}}
+  </div>
+</nav>
+      </header>
+      <div class="container wrapper">
+    <main>
+      <div class="gallery">
+        {{{body}}}content
+      </div>
+    </main>
+  </div>
+ <footer class="bg-dark">
+      <div id="footer-nav-container">
+        <div>
+          {{#if loggedIn}}
+              <a class="logout" href="" class="product">Log Out</a>
+            {{else}}
+              <a href="/login" class="product">Log In</a>
+            {{/if}}
+          <a class="privacy-policy" href="/privacy-policy">Privacy Policy</a>
+          <a class="contact" href="/contact-us">Contact Us</a>
+       
+          <br />
+          <p>&copy; 2022 Cars-R-Us. All rights reserved</p>
+        </div>
+        <div class="logo">
+          
+          Cars-R-Us
+          </div>
+        </div>
+      </div>
+    </footer>
+  
 </body>
+{{#if loggedIn}}
+<script src="/js/logout.js"></script>
+{{/if}}
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"
+  integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3" crossorigin="anonymous"></script>
+
 
 </html>
