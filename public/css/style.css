@@ -143,6 +143,16 @@ background-color: var(--tertiary) !important;
   width: 80%;
   margin-left: 40px;
 }
+
+/* cards style */
+.cars{
+  margin-top: 15px;
+}
+.card-img-top{
+  width: 288px;
+  height:289px;
+}
+
 /*Basic structure of slider*/
 .slide-container{
   width:100%;
