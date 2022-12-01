@@ -153,6 +153,17 @@ background-color: var(--tertiary) !important;
   height:289px;
 }
 
+.add-car{
+  font-size: 40px;
+  font-weight: 400;
+  margin-bottom: 15px;
+}
+
+.update-car{
+  font-size: 40px;
+  font-weight: 400;
+  margin-bottom: 15px;
+}
 .saler-title{
   font-size: 40px;
   font-weight: 400;
