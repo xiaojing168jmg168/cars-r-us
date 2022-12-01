@@ -1,29 +1,33 @@
 <div class="card">
     <h3 class="card-header">Update Car</h3>
+
+    {{!-- Button to upload Image --}}
+    <div class="form-row">
+        <button id="upload_widget" id="image" class="cloudinary-button">Upload Image</button><br>
+    </div>
+    <img id="car-image-new" src="{{car.image}}" />
+
     <form class="card-body update-car-form" id="update-car-form" method="UPDATE" enctype="multipart/form-data">
-        
-        <label for="car-image" class="form-label">Image</label>
-        <input name="car-image" type="file" value="{{car.image}}" class="form-input" />
-        
+    
         <label class="form-label" for="car-brand">Brand</label>
-        <input name="car-brand" type="text" value="{{car.brand}}" class="form-input" />
-        
+        <input name="car-brand" type="text" value="{{car.brand}}" id="brandInput" class="form-input" />
+
         <label class="form-label" for="car-model">Model</label>
-        <input name="car-model" type="text" value="{{car.model}}" class="form-input" />
+        <input name="car-model" type="text" value="{{car.model}}" id="modelInput"class="form-input" />
 
         <label class="form-label" for="car-year">Year</label>
-        <input name="car-year" type="text" value="{{car.year}}" class="form-input" />
+        <input name="car-year" type="text" value="{{car.year}}" id="yearInput" class="form-input" />
 
         <label class="form-label" for="car-mileage">Mileage</label>
-        <input name="car-mileage" type="text" value="{{car.mileage}}" class="form-input" />
+        <input name="car-mileage" type="text" value="{{car.mileage}}" id="mileageInput" class="form-input" />
 
         <label class="form-label" for="car-price">Price</label>
-        <input name="car-price" type="text" value="{{car.price}}" class="form-input" />
+        <input name="car-price" type="text" value="{{car.price}}" id="priceInput" class="form-input" />
 
         <button type="submit" class="btn">Update Car</button>
-        
+
         <button type="button" class="btn primary-btn" data-id="{{{car.id}}}" id="delete-btn">Delete Post</button>
     </form>
 </div>
-
+<script src="https://upload-widget.cloudinary.com/global/all.js" type="text/javascript"></script>
 <script src="/js/update-car.js"></script>

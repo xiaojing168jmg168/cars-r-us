@@ -308,3 +308,8 @@ footer .logo {
 .center-out{
   padding-left: 35%;
 }
+
+/* setting max witdh for images loaded from cloudinary */
+#car-image-new{
+  max-width: 100%;
+}

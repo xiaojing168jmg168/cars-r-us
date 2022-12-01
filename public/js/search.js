@@ -1,20 +1,11 @@
 
 const searchHandler = async (event) => {
-    event.preventDefault();
-const searchInput = document.querySelector('#search').value.trim();
+  event.preventDefault();
+  let brand = document.querySelector('#brand').value.trim();
 
-if(searchInput){
-    const response = await fetch('/api/car',{
-        method: 'POST',
-        body: JSON.stringify({ brand, model, year, mileage }),
-        headers: { 'Content-Type': 'application/json' },
-    })
-    if (response.ok) {
-        document.location.replace('/result');
-      } else {
-        alert('Failed to search.');
-      }
+  console.log(brand)
+  if (brand) {
+    window.location.href=`/search/${brand}`
+  }
 }
-
-}
-document.getElementById("search-btn").addEventListener('submit', searchHandler);
+document.getElementById("search-btn").addEventListener('click', searchHandler);

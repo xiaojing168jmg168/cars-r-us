@@ -6,9 +6,9 @@ const withAuth = require('../../utils/auth');
 const cloudinary = require("cloudinary").v2
 require("dotenv").config();
 console.log(cloudinary.config({
-    cloud_name: process.env.CLOUD_NAME,
-    api_key: process.env.API_KEY,
-    api_secret: process.env.API_SECRET
+    cloud_name: 'dfe0rjexj',
+    api_key: '742987661832851',
+    api_secret: 'zIzYR1-8had9vwTDlmnWo4DyHlo'
 }));
 
 
@@ -17,31 +17,14 @@ console.log(cloudinary.config({
 router.post("/newCar", async (req, res) => {
     try {
         let { image, brand, model, year, mileage, price } = req.body;
-        let img
-        // What to do if there are more than 1 images
-        if (image) {
-            cloudinary.uploader
-                .upload(image, {
-                    resource_type: "image",
-                })
-                .then((result) => {
-                    img = result.url;
-                })
-                .catch((err) => {
-                    console.log(err);
-                })
-        }
-        // What to do if no images are found
-        else {
-            img = "https://res.cloudinary.com/dfe0rjexj/image/upload/v1669079800/Image_not_Available_uocgt8.jpg";
-        }
         const newCarData = Car.create({
-            image: img,
-            brand,
-            model,
-            year,
-            mileage,
-            price
+            image: image,
+            brand: brand,
+            model: model,
+            year: year,
+            mileage: mileage,
+            price: price,
+            user_id: req.session.user_id
         });
         res.status(200).json(newCarData);
     }
@@ -74,33 +57,11 @@ router.delete('/:id', async (req, res) => {
 // Route to update a car listing
 router.put('/:id', async (req, res) => {
     try {
-        const image = req.body.image;
-        let img;
-
-        const oldCarData = await Car.findByPk({id:req.params.id})
-        const oldCar = oldCarData.get({plain: true})
-
-        if (req.body.image){
-            cloudinary.uploader
-                .upload(image, {
-                    resource_type: "image",
-                })
-                .then((result) => {
-                    img = result.url;
-                })
-                .catch((err) => {
-                    console.log(err);
-                })
-        }
-        // What to do if no images are found
-        else {
-            img = oldCar.image;
-        }
 
         const carData = await Car.update(
             {
                 brand: req.body.brand,
-                image: img,
+                image: req.body.image,
                 model: req.body.model,
                 year: req.body.year,
                 mileage: req.body.mileage,
@@ -119,20 +80,21 @@ router.put('/:id', async (req, res) => {
 })
 
 // Search api Route
-router.get('/search/brand=:brand&model=:model&year=:year&mileage=:mileage', async (req, res) => {
-    try{
+router.get('/search/:brand', async (req, res) => {
+    try {
         const carData = await Car.findAll({
             where: {
                 brand: req.params.brand,
-                model: req.params.model,
-                year: req.params.year,
-                mileage: req.params.mileage
+            },
+            include: {
+                model: User,
+                attributes: ['name', 'email']
             }
         })
-        const cars = carData.map((car) => car.get({plain: 'true'}))
+        const cars = carData.map((car) => car.get({ plain: 'true' }))
         res.status(200).json(cars)
     }
-    catch (err){
+    catch (err) {
         res.status(500).json(err)
     }
 })

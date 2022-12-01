@@ -1,31 +1,33 @@
 <h2 class="card-header">Create Your Car info</h2>
 
-<form class="card-body add-car-form" id="add-car-form" method="POST" enctype="multipart/form-data">
+{{!-- Button to upload Image --}}
+<div class="form-row">
+  <button id="upload_widget" id="image" class="cloudinary-button">Upload Image</button><br>
+</div>
+<img id="car-image-new" src=""/>
 
-  <div class="form-row">
-    <label for="image"> image:</label>
-    <input type="file" name="image" id="image" class="form-input form-control">
-  </div>
+<form class="card-body add-car-form" id="add-car-form" method="POST" enctype="multipart/form-data">
   <div class="form-row">
     <label class="form-label" for="brand">Brand</label>
-    <input id="brand" name="brand" class="form-input form-control" />
+    <input id="brandInput" name="brand" class="form-input form-control" />
   </div>
   <div class="form-row">
     <label class="form-label" for="model">Model</label>
-    <input id="model" name="model" class="form-input form-control" />
+    <input id="modelInput" name="model" class="form-input form-control" />
   </div>
   <div class="form-row">
     <label class="form-label" for="year">Year</label>
-    <input id="year" name="year" class="form-input form-control" />
+    <input id="yearInput" name="year" class="form-input form-control" />
   </div>
   <div class="form-row">
     <label class="form-label" for="mileage">Mileage</label>
-    <input id="mileage" name="mileage" class="form-input form-control" />
+    <input id="mileageInput" name="mileage" class="form-input form-control" />
   </div>
   <div class="form-row">
     <label class="form-label" for="price">Price</label>
-    <input id="price" name="price" class="form-input form-control" />
+    <input id="priceInput" name="price" class="form-input form-control" />
   </div>
   <button type="submit" class="btn">Create</button>
 </form>
-<script src="./js/add-car.js"></script>
+<script src="https://upload-widget.cloudinary.com/global/all.js" type="text/javascript"></script>
+<script src="/js/add-car.js"></script>
