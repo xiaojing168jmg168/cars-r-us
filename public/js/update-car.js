@@ -58,7 +58,7 @@ const deleteCarHandler = async function (event) {
   };
 }
 document
-  .querySelector(".car")
+  .querySelector("#delete-btn")
   .addEventListener("click", deleteCarHandler);
 
 
