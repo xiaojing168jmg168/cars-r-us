@@ -3,14 +3,7 @@
 const router = require('express').Router();
 const { Car } = require('../../models');
 const withAuth = require('../../utils/auth');
-const cloudinary = require("cloudinary").v2
 require("dotenv").config();
-console.log(cloudinary.config({
-    cloud_name: 'dfe0rjexj',
-    api_key: '742987661832851',
-    api_secret: 'zIzYR1-8had9vwTDlmnWo4DyHlo'
-}));
-
 
 
 // Route to create a new listing
