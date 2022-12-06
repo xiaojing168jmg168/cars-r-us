@@ -28,7 +28,7 @@
   For sellers they will need to create an account with a name, email, and password. Then they'll be able to list their vehicles and contact info for buyers to see. Buyers will be able to just open the webpage and search for their vehicle of choice and have anything available from sellers show up on the webpage.
 
   ## Contribution
-  Xiaojing Deng who mainly focused on frontend. Daniel Vidal who mainly focused on the controllers. Mahmoud Khalil who mainly focused on the addcar.handlerbars, updatecar.handlebars, addcar.js, updatecar.js. Khalil Khalil who mainly focused on the seeds, signup.handlerbars, login.handlebars,  public/login.js, public/logout.js. Everyone also contributed to other assignments when help was needed.
+  Xiaojing Deng who mainly focused on front-end. Daniel Vidal who mainly focused on the controllers. Mahmoud Khalil who mainly focused on the addcar.handlerbars, updatecar.handlebars, addcar.js, updatecar.js. Khalil Khalil who mainly focused on the seeds, signup.handlerbars, login.handlebars,  public/login.js, public/logout.js. Everyone also contributed to other assignments when help was needed.
 
   ## License
   https://opensource.org/licenses/ISC
